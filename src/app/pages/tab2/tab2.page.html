@@ -1,17 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>
       Historial
     </ion-title>
+    <ion-buttons slot="end"  (click)="EnviarCorreo()">
+      Enviar
+      <ion-button 
+                   color="primary" >
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+        
+      </ion-button>
+    </ion-buttons>
+     
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+  <ion-list>
+    <ion-item slot=""> 
+      <ion-icon slot="start" name="globe"></ion-icon>
+      <ion-label>
+        <h2>Awesome Label</h2>
+         <p>2020-07-10</p>
+    </ion-label>
+     
+    </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  </ion-list>
+ 
 </ion-content>
