@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { DatalocalService } from '../../services/datalocal.service';
 
 @Component({
   selector: 'app-tab1',
@@ -34,17 +35,25 @@ export class Tab1Page {
   }
 
 
-  constructor(private barcodeScanner: BarcodeScanner) {
+  constructor(private barcodeScanner: BarcodeScanner,
+              private datalocal: DatalocalService) {
 
-
-  }
+                 }
 
   Scanner(){
 
     this.barcodeScanner.scan().then(barcodeData => {
     console.log('Barcode data', barcodeData);
+    if (!barcodeData.cancelled){
+       this.datalocal.GuardarRegistro(barcodeData.format, barcodeData.text);
+
+     }
+
+
    }).catch(err => {
        console.log('Error', err);
+       // para hacer pruebas... desde la compu... simulamos que no hay errores
+       this.datalocal.GuardarRegistro('QRcode', 'http://fernando-herrera.com');
    });
 
   }
