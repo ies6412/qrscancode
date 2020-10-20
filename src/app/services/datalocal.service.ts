@@ -27,15 +27,12 @@ export class DatalocalService {
   async GuardarRegistro(format: string, text: string){
 
     await this.CargarStorage();
-    const guardado = new Registro(format, text);
-    this.guardados.unshift(guardado);
+    const NuevoRegistro = new Registro(format, text);
+    this.guardados.unshift(NuevoRegistro);
 
     console.log('lo que se esta guardando', this.guardados);
     this.storage.set('registro', this.guardados);
-
-
-
-
+    this.abrirRegistro(NuevoRegistro);
   }
   abrirRegistro(registro: Registro){
     this.NavCtrl.navigateForward('/tabs/tab2');
@@ -44,7 +41,7 @@ export class DatalocalService {
          this.iab.create(registro.text, '_system') ;
 
 
-        break;
+         break;
     }
 
   }
