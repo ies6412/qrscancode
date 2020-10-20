@@ -12,7 +12,7 @@ export class Tab2Page {
 
   EnviarCorreo(){}
   abrirregistro(registro){
-    console.log(registro);
+    this.datalocal.abrirRegistro(registro);
   }
 
 }
